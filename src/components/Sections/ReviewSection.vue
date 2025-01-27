@@ -25,12 +25,17 @@
         <span class="review__review-count">123 відгуки</span>
       </div>
     </div>
-    <div class="review-buttons"></div>
+    <div class="review-buttons">
+      <ReviewButton />
+      <NotifyButton />
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import StarRating from 'vue-star-rating'
+import ReviewButton from '@/components/Elements/Buttons/ReviewButton.vue'
+import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -99,5 +104,14 @@ import StarRating from 'vue-star-rating'
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
+}
+
+.review-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
 }
 </style>
