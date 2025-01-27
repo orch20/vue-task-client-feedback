@@ -51,6 +51,20 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.05);
+
+  @include min(577) {
+    width: 100%;
+    max-width: 912px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  @include min(1200) {
+    max-width: 1286px;
+  }
+  @include min(1367) {
+    max-width: 1458px;
+  }
 }
 
 .review-content {
@@ -59,6 +73,19 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
+  @include min(577) {
+    gap: 10px;
+  }
+  @include min(1200) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+  }
+  @include min(1367) {
+    gap: 60px;
+  }
 }
 
 .review-header {
@@ -73,6 +100,10 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   font-style: normal;
   font-weight: 500;
   line-height: 26px;
+  @include min(1200) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 }
 
 .review__rating {
@@ -81,6 +112,11 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   justify-content: center;
   align-items: flex-start;
   gap: 6px;
+  @include min(577) {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 .review__rating-container {
@@ -96,6 +132,10 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   font-style: normal;
   font-weight: 500;
   line-height: 32px;
+  @include min(1200) {
+    font-size: 36px;
+    line-height: 44px;
+  }
 }
 
 .review__review-count {
@@ -104,6 +144,7 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
+  white-space: nowrap;
 }
 
 .review-buttons {
@@ -113,5 +154,10 @@ import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
+  @include min(577) {
+    width: fit-content;
+    flex-direction: row;
+    gap: 20px;
+  }
 }
 </style>

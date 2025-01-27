@@ -21,6 +21,7 @@
   color: #fff;
   cursor: pointer;
 
+  font-family: 'Formular', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
