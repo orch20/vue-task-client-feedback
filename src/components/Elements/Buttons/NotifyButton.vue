@@ -1,8 +1,31 @@
 <template>
-  <button @click="onClickNotify" class="notify-button">Написати</button>
+  <button @click="openModal" class="notify-button">Написати</button>
+  <ModalComponent
+    :isOpen="isModalOpened"
+    @modal-close="closeModal"
+    @submit="submitHandler"
+    name="first-modal"
+  />
 </template>
 
-<script lang="ts"></script>
+<script lang="ts" setup>
+import { ref } from 'vue'
+import ModalComponent from '@/components/Modals/ModalComponent.vue'
+
+const isModalOpened = ref(false)
+
+const openModal = () => {
+  isModalOpened.value = true
+}
+const closeModal = () => {
+  isModalOpened.value = false
+}
+
+const submitHandler = () => {
+  //here you do whatever
+  console.log('submit')
+}
+</script>
 
 <style lang="scss" scoped>
 @import '@/assets/main.scss';
