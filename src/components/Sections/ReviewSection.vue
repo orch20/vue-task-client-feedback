@@ -1,14 +1,16 @@
 <template>
-  <section class="review">
+  <section v-if="!isLoading" class="review">
     <div class="review-content">
       <div class="review-header">
         <img src="@/img/google.svg" alt="Google logo" class="review-logo" />
         <h1 class="review-title">Відгуки наших клієнтів у Google</h1>
       </div>
+
       <div class="review__rating">
         <div class="review__rating-container">
           <span class="review__rating-value">{{ reviewsData.rating }}</span>
           <star-rating
+            class="review__rating-stars"
             v-model:rating="reviewsData.rating"
             :increment="0.1"
             :read-only="true"
@@ -24,12 +26,13 @@
         </div>
         <span class="review__review-count">{{ reviewsData.count }} відгуки</span>
       </div>
-    </div>
-    <div class="review-buttons">
-      <ReviewButton />
-      <NotifyButton />
+      <div class="review-buttons">
+        <ReviewButton />
+        <NotifyButton />
+      </div>
     </div>
   </section>
+  <span v-else class="review-title loading">Loading...</span>
 </template>
 
 <script setup lang="ts">
@@ -37,7 +40,7 @@ import StarRating from 'vue-star-rating'
 import ReviewButton from '@/components/Elements/Buttons/ReviewButton.vue'
 import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
 import { getReviews } from '@/services/reviewsApi'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 
 interface ReviewsData {
   rating: number
@@ -49,14 +52,18 @@ const reviewsData = reactive<ReviewsData>({
   count: 0,
 })
 
+const isLoading = ref<boolean>(true)
+
 onMounted(async () => {
   try {
+    isLoading.value = true
     const { data } = await getReviews()
     reviewsData.rating = data[0].rating
     reviewsData.count = data[0].count
-    console.log(data)
   } catch (error) {
     console.error(error)
+  } finally {
+    isLoading.value = false
   }
 })
 </script>
@@ -161,6 +168,10 @@ onMounted(async () => {
   }
 }
 
+.review__rating-stars {
+  margin-bottom: -5px;
+}
+
 .review__review-count {
   color: $secondary-text-color;
   font-size: 14px;
@@ -181,6 +192,16 @@ onMounted(async () => {
     width: fit-content;
     flex-direction: row;
     gap: 20px;
+  }
+}
+
+.loading {
+  animation: blink 0.5s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 </style>
