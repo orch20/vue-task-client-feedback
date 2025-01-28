@@ -9,17 +9,17 @@
         <div class="review__rating-container">
           <span class="review__rating-value">{{ reviewsData.rating }}</span>
           <star-rating
-            :rating="4.5"
+            v-model:rating="reviewsData.rating"
+            :increment="0.1"
             :read-only="true"
-            :star-size="10"
-            :max-rating="5"
+            :star-size="24"
+            :padding="6"
+            :allow-half="true"
             :show-rating="false"
-            :round-start-rating="false"
-            :border-width="2"
-            border-color="#FCC141"
             active-color="#FCC141"
             inactive-color="#fff"
-            :gap="6"
+            :rounded-corners="true"
+            :round-start-rating="false"
           />
         </div>
         <span class="review__review-count">{{ reviewsData.count }} відгуки</span>
