@@ -7,7 +7,7 @@
       </div>
       <div class="review__rating">
         <div class="review__rating-container">
-          <span class="review__rating-value">4.9</span>
+          <span class="review__rating-value">{{ reviewsData.rating }}</span>
           <star-rating
             :rating="4.5"
             :read-only="true"
@@ -22,7 +22,7 @@
             :gap="6"
           />
         </div>
-        <span class="review__review-count">123 відгуки</span>
+        <span class="review__review-count">{{ reviewsData.count }} відгуки</span>
       </div>
     </div>
     <div class="review-buttons">
@@ -36,6 +36,29 @@
 import StarRating from 'vue-star-rating'
 import ReviewButton from '@/components/Elements/Buttons/ReviewButton.vue'
 import NotifyButton from '@/components/Elements/Buttons/NotifyButton.vue'
+import { getReviews } from '@/services/reviewsApi'
+import { onMounted, reactive } from 'vue'
+
+interface ReviewsData {
+  rating: number
+  count: number
+}
+
+const reviewsData = reactive<ReviewsData>({
+  rating: 0,
+  count: 0,
+})
+
+onMounted(async () => {
+  try {
+    const { data } = await getReviews()
+    reviewsData.rating = data[0].rating
+    reviewsData.count = data[0].count
+    console.log(data)
+  } catch (error) {
+    console.error(error)
+  }
+})
 </script>
 
 <style lang="scss" scoped>
