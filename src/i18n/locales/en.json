@@ -1,0 +1,18 @@
+{
+  "locale": {
+    "en": "en",
+    "uk": "ua"
+  },
+  "button": {
+    "notify": "Notify",
+    "send": "Send",
+    "review": "Review"
+  },
+  "reviewSection": {
+    "title": "Our clients reviews on Google",
+    "feedback": "feedbacks"
+  },
+  "modal": {
+    "title": "Please leave a review"
+  }
+}

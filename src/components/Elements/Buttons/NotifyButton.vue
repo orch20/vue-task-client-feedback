@@ -1,16 +1,21 @@
 <template>
-  <button @click="openModal" class="notify-button">Написати</button>
-  <ModalComponent
-    :isOpen="isModalOpened"
-    @modal-close="closeModal"
-    @submit="submitHandler"
-    name="first-modal"
-  />
+  <button @click="openModal" class="notify-button">{{ $t('button.notify') }}</button>
+  <Teleport to="body">
+    <Transition name="modal-fade">
+      <ModalComponent :isOpen="isModalOpened" @modal-close="closeModal" name="first-modal" />
+    </Transition>
+  </Teleport>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import ModalComponent from '@/components/Modals/ModalComponent.vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+locale.value = 'en'
+console.log('locale', locale.value)
 
 const isModalOpened = ref(false)
 
@@ -19,11 +24,6 @@ const openModal = () => {
 }
 const closeModal = () => {
   isModalOpened.value = false
-}
-
-const submitHandler = () => {
-  //here you do whatever
-  console.log('submit')
 }
 </script>
 
@@ -58,5 +58,19 @@ const submitHandler = () => {
   &:hover {
     opacity: 0.6;
   }
+
+  @include min(577) {
+    min-width: 109px;
+  }
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: 0.25s ease all;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="review-content">
       <div class="review-header">
         <img src="@/img/google.svg" alt="Google logo" class="review-logo" />
-        <h1 class="review-title">Відгуки наших клієнтів у Google</h1>
+        <h1 class="review-title">{{ $t('reviewSection.title') }}</h1>
       </div>
 
       <div class="review__rating">
@@ -24,7 +24,9 @@
             :round-start-rating="false"
           />
         </div>
-        <span class="review__review-count">{{ reviewsData.count }} відгуки</span>
+        <span class="review__review-count"
+          >{{ reviewsData.count }} {{ $t('reviewSection.feedback') }}</span
+        >
       </div>
       <div class="review-buttons">
         <ReviewButton />
@@ -192,6 +194,9 @@ onMounted(async () => {
     width: fit-content;
     flex-direction: row;
     gap: 20px;
+  }
+  @include min(1200) {
+    margin-left: auto;
   }
 }
 

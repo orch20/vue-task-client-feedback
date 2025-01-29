@@ -5,7 +5,7 @@
     rel="noopener noreferrer nofollow"
     class="review-button"
   >
-    Переглянути
+    {{ $t('button.review') }}
   </a>
 </template>
 
@@ -42,6 +42,10 @@
     color: #fff;
     border-color: #fff;
     opacity: 0.6;
+  }
+
+  @include min(577) {
+    min-width: 132px;
   }
 }
 </style>

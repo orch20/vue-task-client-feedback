@@ -2,7 +2,7 @@
   <div v-if="isOpen" class="modal-mask">
     <div class="modal-wrapper">
       <div class="modal-container" ref="target">
-        <h2 class="modal-title">Залиште будь ласка відгук</h2>
+        <h2 class="modal-title">{{ $t('modal.title') }}</h2>
         <star-rating
           v-model:rating="rating"
           :increment="0.1"
@@ -15,14 +15,16 @@
           :round-start-rating="false"
         />
         <span class="modal-rating-value">{{ rating }}</span>
-        <button @click.stop="emit('modal-close')" class="modal-button">Надіслати</button>
+        <button @click.stop="emit('modal-close')" class="modal-button">
+          {{ $t('button.send') }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import StarRating from 'vue-star-rating'
 
@@ -35,6 +37,18 @@ const emit = defineEmits(['modal-close'])
 
 const target = ref<HTMLElement | null>(null)
 onClickOutside(target, () => emit('modal-close'))
+
+function keydownListener(event) {
+  if (event.key === 'Escape') emit('modal-close')
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', keydownListener)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', keydownListener)
+})
 </script>
 
 <style lang="scss" scoped>

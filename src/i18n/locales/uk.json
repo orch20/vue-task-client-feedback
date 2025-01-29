@@ -1,0 +1,18 @@
+{
+  "locale": {
+    "en": "en",
+    "uk": "ua"
+  },
+  "button": {
+    "notify": "Написати",
+    "send": "Надіслати",
+    "review": "Переглянути"
+  },
+  "reviewSection": {
+    "title": "Відгуки наших клієнтів у Google",
+    "feedback": "відгуки"
+  },
+  "modal": {
+    "title": "Залиште будь ласка відгук"
+  }
+}
