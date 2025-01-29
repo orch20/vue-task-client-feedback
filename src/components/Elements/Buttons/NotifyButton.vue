@@ -10,12 +10,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import ModalComponent from '@/components/Modals/ModalComponent.vue'
-import { useI18n } from 'vue-i18n'
-
-const { locale } = useI18n()
-
-locale.value = 'en'
-console.log('locale', locale.value)
 
 const isModalOpened = ref(false)
 

@@ -9,8 +9,6 @@
   </a>
 </template>
 
-<script lang="ts"></script>
-
 <style lang="scss" scoped>
 @import '@/assets/main.scss';
 

@@ -38,7 +38,7 @@ const emit = defineEmits(['modal-close'])
 const target = ref<HTMLElement | null>(null)
 onClickOutside(target, () => emit('modal-close'))
 
-function keydownListener(event) {
+function keydownListener(event: KeyboardEvent) {
   if (event.key === 'Escape') emit('modal-close')
 }
 
