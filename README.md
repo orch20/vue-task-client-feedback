@@ -1,39 +1,58 @@
-# vue-task-client-feedback
+Цей проєкт створений на основі Vite та Vue 3. Він містить функціональність модальних вікон та підтримку багатомовності через Vue I18n.
 
-This template should help get you started developing with Vue 3 in Vite.
+## 🚀 Функціонал
 
-## Recommended IDE Setup
+- ⚡ Швидкий рендеринг завдяки Vite
+- 🌍 Локалізація через i18n
+- 🖼️ Модальні вікна для зручної взаємодії
+- 🎨 Гнучка структура компонентів
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📦 Встановлення
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Встановіть залежності
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Запустіть локальний сервер
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## 🏗️ Структура проєкту
 
-```sh
-npm run build
-```
+📂 src
 
-### Lint with [ESLint](https://eslint.org/)
+- 📂 assets # Статичні файли (стилі)
+- 📂 components # Повторно використовувані Vue-компоненти
+  - 📂 Elements
+  - 📂 Modals
+  - 📂 Sections
+- 📂 i18n # Файли локалізації i18n
+  - 📂 locales
+- 📂 img # Зображення
+- 📂 services # API сервіси
+- 📂 types # Типи
+- App.vue # Головний компонент
+- main.ts # Точка входу в застосунок
 
-```sh
-npm run lint
+## 🌍 Локалізація
+
+Локалізація реалізована через Vue I18n. Доступні мови знаходяться в [src/i18n/locales](src/i18n/locales).
+
+Додавання нової мови:
+
+1. Створіть файл `src/i18n/locales/fr.json`
+2. Додайте відповідні ключі та переклади
+3. Підключіть його в `src/i18n/index.js`
+
+Приклад файлу `src/i18n/locales/en.json`:
+
+```json
+{
+  "hello": "Hello, world!",
+  "welcome": "Welcome to our app!"
+}
 ```
